@@ -23,4 +23,4 @@ just a mathematically background can follow the implementation and a person
 with just a development background can follow the publication. 
 """
 
-from fips_pub_180_3 import SHA
+from fips_pub_180_4 import SHA
