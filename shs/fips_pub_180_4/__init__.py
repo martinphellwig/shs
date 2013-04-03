@@ -8,10 +8,11 @@
 #
 # This module is coded against FIPS PUB 180-3
 # Which can be found at: 
-# csrc.nist.gov/publications/fips/fips180-3/fips180-3_final.pdf
+# csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf
+# 
 #
 # Implementation note, the sha functions are split into these modules:
-# _sha1, _sha224, _sha256, _sha384 and _sha512.
+# _sha1, _sha224, _sha256, _sha384, _sha512, _sha512_224 and _sha512_256.
 # The modules have a lot of code in common which on purpose have not been
 # factored out to keep the FIPS specification more in line with the code.
 #
@@ -33,8 +34,8 @@ from _sha_512 import computation as _sha_512
 from _sha_384 import computation as _sha_384
 
 class SHA(object):
-    """Secure Hash Algorithm, digest_size must be a one of 160, 224, 256, 384 
-    or 512."""
+    """Secure Hash Algorithm, digest_size must be a one of 160, 224, 256, 384, 
+    512, '512:224' or '512:256'."""
     def __init__(self, digest_size=512):
         # Fetch the appropriate algorithm.
         digests = {160:_sha_1,

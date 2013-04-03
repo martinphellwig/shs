@@ -14,6 +14,7 @@ from _binary import Bits
 #from _constants_and_initials import H0_SHA_512, K_SHA512
 from _constants_and_initials import H0_SHA_384, K_SHA_384
 
+# 1. Introduction - Figure 1: Secure Hash Algorithm Properties
 SIZE_WORD = 64
 SIZE_BLOCK = 1024
 

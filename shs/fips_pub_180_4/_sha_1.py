@@ -12,6 +12,7 @@ from _functions import pad
 from _binary import Bits
 from _constants_and_initials import H0_SHA_1, K_SHA_1
 
+# 1. Introduction - Figure 1: Secure Hash Algorithm Properties 
 SIZE_WORD = 32
 SIZE_BLOCK = 512
 
@@ -23,21 +24,21 @@ def rotate_left(word, amount):
     return(return_value)
 
 def function_ch(b, c, d):
-    # 4.1.1 # 0 <= t <= 19
+    # 4.1.1 - (4.1) # 0 <= t <= 19
     value = (b & c) | ((~ b) & d)
     return(value)
 
 def function_maj(b, c, d):
-    # 4.1.1 # 40 <= t <= 59
+    # 4.1.1 - (4.1) # 40 <= t <= 59
     value = (b & c) | (b &d ) | (c & d)
     return(value)
 
 def function_parity(b, c, d):
-    # 4.1.1  #  20 <= t <= 39; 60 <= t <= 79
+    # 4.1.1 - (4.1) #  20 <= t <= 39; 60 <= t <= 79
     value = b ^ c ^ d
     return(value)
 
-SHA1_FUNCTIONS = dict() # 4.1.1 # Map the logical functions
+SHA1_FUNCTIONS = dict() # 4.1.1 - (4.1) # Map the logical functions
 for index in range(0, 20):
     SHA1_FUNCTIONS[index] = function_ch
 for index in range(20, 40):
