@@ -32,6 +32,8 @@ from _sha_256 import computation as _sha_256
 from _sha_224 import computation as _sha_224
 from _sha_512 import computation as _sha_512
 from _sha_384 import computation as _sha_384
+from _sha_512_224 import computation as _sha_512_224
+from _sha_512_256 import computation as _sha_512_256
 
 class SHA(object):
     """Secure Hash Algorithm, digest_size must be a one of 160, 224, 256, 384, 
@@ -42,7 +44,9 @@ class SHA(object):
                    224:_sha_224,
                    256:_sha_256,
                    512:_sha_512,
-                   384:_sha_384}
+                   384:_sha_384,
+                   '512:224':_sha_512_224,
+                   '512:256':_sha_512_256}
         
         self._computation = digests[digest_size]    
         self.content = '' # This must be a bytestring
@@ -76,6 +80,7 @@ class SHA(object):
 def main():
     import hashlib
     message = 'This is a message'
+    message = ''
 
     print('# Testing this code (TC) against Python built-in (BI)')
     print('# Hashing Message:"%s"' % message)
@@ -137,7 +142,20 @@ def main():
     print(sha.hexdigest())
     print('#' * 79)    
     
-    
+    print('# - Sha 512/224')
+    print('TC:'),
+    sha = SHA('512:224')
+    sha.update(message)
+    print(sha.hexdigest())
+    print('#' * 79)
+
+    print('# - Sha 512/256')
+    print('TC:'),
+    sha = SHA('512:256')
+    sha.update(message)
+    print(sha.hexdigest())
+    print('#' * 79)
+
 if __name__ == '__main__':
     main()
     
